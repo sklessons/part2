@@ -36,12 +36,12 @@ class Farm
 
     public function getAnimals()
     {
-        return $this->$animals;
+        return $this->animals;
     }
 
     public function addAnimal(Animal $animal)
     {
-        $this->$animals[] = $animal;
+        $this->animals[] = $animal;
     }
 
     public static function random($arr, $list)
