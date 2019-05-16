@@ -40,21 +40,16 @@ class Smoke implements Flame
     }
 }
 
-class ObjectBase
+trait HelpToString
 {
     public function __toString()
     {
         return get_class($this);
     }
-
-    public function burn()
-    {
-        return new Smoke;
-    }
 }
 
 //универсально + полиморфизм
-class SupperObject extends ObjectBase
+trait RandomFlame
 {
     protected $flames = [
         'Smoke', 'BlueFlame', 'RedFlame'
@@ -68,40 +63,50 @@ class SupperObject extends ObjectBase
 
 
 // 5 objects
-class Piano extends ObjectBase
+class Piano
 {
+    use HelpToString;
+
     public function burn()
     {
         return new Smoke;
     }
 }
 
-class Apple extends ObjectBase
+class Apple
 {
+    use HelpToString;
+
     public function burn()
     {
         return new RedFlame;
     }
 }
 
-class Plain extends ObjectBase
+class Plain
 {
+    use HelpToString;
+
     public function burn()
     {
         return new BlueFlame;
     }
 }
 
-class Toy extends ObjectBase
+class Toy
 {
+    use HelpToString;
+
     public function burn()
     {
         return new BlueFlame;
     }
 }
 
-class Book extends ObjectBase
+class Book
 {
+    use HelpToString;
+
     public function burn()
     {
         return new Smoke;
@@ -120,11 +125,14 @@ class Bang implements Flame
     }
 }
 
-class Space extends SupperObject
+class Space
 {
+    use HelpToString;
+    use RandomFlame;
+
     public function __construct()
     {
-        array_push($this->flames, 'Bang'); 
+        array_push($this->flames, 'Bang');
     }
 }
 

@@ -61,22 +61,22 @@ class Farm
         $this->animals[] = $animal;
     }
 
-    protected static function random($arr, $list)
-    {
-        $key = rand(0, count($arr) - 1);
-
-        if (in_array($key, $list)) {
-            return self::random($arr, $list);
-        } else {
-            return $key;
-        }
-    }
+    // protected static function random($arr, $list)
+    // {
+    //     $key = rand(0, count($arr) - 1);
+    //
+    //     if (in_array($key, $list)) {
+    //         return self::random($arr, $list);
+    //     } else {
+    //         return $key;
+    //     }
+    // }
 
     public function rollCall()
     {
-        shuffle($this->$animals);
+        shuffle($this->animals);
 
-        foreach ($this->$animals as $animal) {
+        foreach ($this->animals as $animal) {
             $animal->say();
         }
     }
